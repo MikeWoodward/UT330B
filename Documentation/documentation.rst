@@ -333,7 +333,7 @@ I’ve seen this device (UT330B) on several websites worldwide. The cheapest pla
 How the I found the commands and data
 -------------------------------------
 
-I did this with a great deal of help from Philip Gladstone.
+I did this with a great deal of help from `Philip Gladstone <https://github.com/pjsg/>`_.
 
 We set up a Windows machine and installed the UT330 software. We also installed USB monitoring software. This monitoring software displayed all of the data exchanged between the UT330B device and the UT330 software.
 
