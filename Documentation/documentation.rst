@@ -47,7 +47,7 @@ Using the UT330 object – a short tutorial
 Dependencies
 ------------
 
-The UT330 object depends on the following libraries:
+The UT330 object depends on the following libraries
  * datetime
  * pyserial (version 3.01)
  * time
@@ -112,9 +112,13 @@ The temperature, humidity, and pressure data can be read from the device using t
 
     if DATA != []:                  
 
-    print  'Timestamp, Temperature (C), Relative humidity (%), '\                              'Pressure (Pa)\n'   
+    print  'Timestamp, Temperature (C), Relative humidity (%), Pressure (Pa)\n'   
+    
     for data_line in DATA:                          
-        line = "{0}, {1}, {2}, {3}\n". \                                format(data_line['timestamp'],                                           data_line['temperature'],                                       data_line['humidity'],                                         data_line['pressure'])                                                   
+        line = "{0}, {1}, {2}, {3}\n". format(data_line['timestamp'],
+                                              data_line['temperature'],
+                                              data_line['humidity'],
+                                              data_line['pressure'])                                                   
         print line[:-1] 
 
 Change the configuration
@@ -146,20 +150,20 @@ Here’s how you change the configuration and check it’s changed using the wri
     print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
     CONFIG = {'device name': 'UT330B',                       
               'sampling interval': 300,                       
-'overwrite records': False,                       
-'delay timing': 120,                       
-'delay start': True,                       
-'high temperature alarm': 40,                      
-'low temperature alarm': -10,                       
-'high humidity alarm': 95,                       
-'low humidity alarm': 10}  
+              'overwrite records': False,                       
+              'delay timing': 120,                       
+              'delay start': True,                       
+              'high temperature alarm': 40,                      
+              'low temperature alarm': -10,                       
+              'high humidity alarm': 95,                       
+              'low humidity alarm': 10}  
             
-ut330.write_config(CONFIG)              
+    ut330.write_config(CONFIG)              
 
-CONFIG_NEW = ut330.read_config()              
+    CONFIG_NEW = ut330.read_config()              
 
-for k, v in CONFIG.iteritems():                 
-print "{0} Old = {1} New = {2}".format(k, CONFIG[k],                                                        CONFIG_NEW[k])
+    for k, v in CONFIG.iteritems():                 
+        print "{0} Old = {1} New = {2}".format(k, CONFIG[k], CONFIG_NEW[k])
 
 What else can you do?
 ---------------------
@@ -206,32 +210,42 @@ Methods
 ------
 
 Disconnect
+``````````
 
 Disconnects the UT330 device.
 
 No return value.
 
-Read_data
+read_data
+`````````
 
-Delete_data
+delete_data
+```````````
 
-Read_config
+read_config
+```````````
 
-Write_config
+write_config
+````````````
 
-Write_date_time
+write_date_time
+```````````````
 
-Read_offsets
+read_offsets
+````````````
 
-Write_offsets
+write_offsets
+`````````````
 
-Restore_factory
+restore_factory
+```````````````
 
 Restores the factory settings.
 
 No return value
 
-Read_device_name
+read_device_name
+````````````````
 
 This returns the device name stripped of all leading and trailing blanks. The maximum device name length is 10 characters. 
 
