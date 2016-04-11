@@ -61,7 +61,7 @@ Connect and read the device name
 
 For any of this to work, you must connect the UT330 to a USB port on your system.
 
-The software has been designed to work with the Python with command, just like a file object. Here’s how.:
+The software has been designed to work with the Python with command, just like a file object. Here’s how. ::
 
     from ut330 import UT330
 
@@ -78,64 +78,74 @@ Here, the UT330 is opened and a variable (ut330) initialized. The function read_
 Read the offsets
 ----------------
 
-The UT330B allows you to set temperature and humidity offsets, allowing you to calibrate it. Here’s how you can read the offsets.
+The UT330B allows you to set temperature and humidity offsets, allowing you to calibrate it. Here’s how you can read the offsets. ::
 
-from ut330 import UT330
+    from ut330 import UT330
 
-with UT330() as ut330:      
-print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"             print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading offsets ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"             print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"              offsets = ut330.read_offsets()
-print offsets
+    with UT330() as ut330:      
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"    
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading offsets ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+    
+    offsets = ut330.read_offsets()
+    print offsets
 
-The offsets variable is a very simple Python dict:
+The offsets variable is a very simple Python dict: ::
 
-offsets= {	'temperature offset': 0,                        
-'humidity offset': 0,                        
-'pressure offset': 0}
+    offsets= {	'temperature offset': 0,                        
+                'humidity offset': 0,                        
+                'pressure offset': 0}
 
 The UT330B does not have a pressure sensor, so the pressure offset is irrelevant.
 
 Reading the data
 ----------------
 
-The temperature, humidity, and pressure data can be read from the device using the read_data(method). Here’s an example that shows reading the data and printing the result
+The temperature, humidity, and pressure data can be read from the device using the read_data(method). Here’s an example that shows reading the data and printing the result. ::
 
-# Read data   
-with UT330() as ut330:           
-print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"             print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading data ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"             print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"              DATA = ut330.read_data()              
+    # Read data   
+    with UT330() as ut330:           
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading data ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"   
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+    DATA = ut330.read_data()              
 
-if DATA != []:                  
+    if DATA != []:                  
 
-print  'Timestamp, Temperature (C), Relative humidity (%), '\                              'Pressure (Pa)\n'   
-for data_line in DATA:                          
-line = "{0}, {1}, {2}, {3}\n". \                                format(data_line['timestamp'],                                       data_line['temperature'],                                       data_line['humidity'],                                       data_line['pressure'])                                                   
-print line[:-1] 
+    print  'Timestamp, Temperature (C), Relative humidity (%), '\                              'Pressure (Pa)\n'   
+    for data_line in DATA:                          
+        line = "{0}, {1}, {2}, {3}\n". \                                format(data_line['timestamp'],                                           data_line['temperature'],                                       data_line['humidity'],                                         data_line['pressure'])                                                   
+        print line[:-1] 
 
 Change the configuration
 ------------------------
 
 As well as read data from the UT330B, you can also change its settings. Here, I’ll just show one example, changing the configuration information.
 
-To do this, we have to create a dict which must be defined like this:
+To do this, we have to create a dict which must be defined like this: ::
 
-CONFIG = {'device name': 'UT330B',                       
-'sampling interval': 300,                       
-'overwrite records': False,                      
-'delay timing': 120,                       
-'delay start': True,                       
-'high temperature alarm': 40,                       
-'low temperature alarm': -10,                       
-'high humidity alarm': 95,                       
-'low humidity alarm': 10}
+    CONFIG = {'device name': 'UT330B',                       
+              'sampling interval': 300,                       
+              'overwrite records': False,                      
+              'delay timing': 120,                       
+              'delay start': True,                       
+              'high temperature alarm': 40,                       
+              'low temperature alarm': -10,                       
+              'high humidity alarm': 95,                       
+              'low humidity alarm': 10}
 
 The UT330 code shows the valid ranges for these variables. For example, you can have at most ten characters as the device name.
 
-Here’s how you change the configuration and check it’s changed using the write_config and read_config methods.
+Here’s how you change the configuration and check it’s changed using the write_config and read_config methods. ::
 
-with UT330() as ut330:           
+    with UT330() as ut330:           
 
-# Write config             
-print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"             print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Write config ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"             print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"              CONFIG = {'device name': 'UT330B',                       
-'sampling interval': 300,                       
+    # Write config             
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"    
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Write config ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"    
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+    CONFIG = {'device name': 'UT330B',                       
+              'sampling interval': 300,                       
 'overwrite records': False,                       
 'delay timing': 120,                       
 'delay start': True,                       
@@ -156,11 +166,11 @@ What else can you do?
 
 The documentation for the UT330 class describes in more detail what’s available, but here’s a quick summary:
 
-•	Write the date and time
-•	Read and write the offsets
-•	Read and write the configuration
-•	Delete the data
-•	Do a factory reset on the device
+* Write the date and time
+* Read and write the offsets
+* Read and write the configuration
+* Delete the data
+* Do a factory reset on the device
 
 The UT330 UI
 ============
@@ -170,16 +180,16 @@ Background
 
 I wanted some way of displaying a chart and updating configuration settings using a UI. I could have done this with JavaScript and linked to Python, but I wanted to try out the Bokeh visualization package. I got something up and running, so I thought I would include it here.
 
-To try this code, you’ll need to install the Bokeh project. To do this, type:
+To try this code, you’ll need to install the Bokeh project. To do this, type: ::
 
-Pip install bokeh
+    pip install bokeh
 
 Starting the UI
 ---------------
 
-The Bokeh application here uses the Bokeh server to provide a web interface. To run the application, you’ll need to start the Bokeh server. From a console, type in:
+The Bokeh application here uses the Bokeh server to provide a web interface. To run the application, you’ll need to start the Bokeh server. From a console, type in: ::
 
-bokeh serve
+    bokeh serve
 
 Once the server starts, you should see something like this in the console window.
 
@@ -193,6 +203,7 @@ The UT330 object
 ================
 
 Methods
+------
 
 Disconnect
 
@@ -227,10 +238,12 @@ This returns the device name stripped of all leading and trailing blanks. The ma
 Returns the device name.
 
 Attributes
+----------
 
 None of the attributes are designed for use outside of the object. Use them at your own risk.
 
 Functions
+---------
 
 Modbus
 
