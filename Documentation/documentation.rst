@@ -61,7 +61,7 @@ Connect and read the device name
 
 For any of this to work, you must connect the UT330 to a USB port on your system.
 
-The software has been designed to work with the Python with command, just like a file object. Here’s how.::
+The software has been designed to work with the Python with command, just like a file object. Here’s how.:
 
     from ut330 import UT330
 
