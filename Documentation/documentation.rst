@@ -47,7 +47,8 @@ Using the UT330 object – a short tutorial
 Dependencies
 ------------
 
-The UT330 object depends on the following libraries
+The UT330 object depends on the following libraries:
+
  * datetime
  * pyserial (version 3.01)
  * time
@@ -83,9 +84,9 @@ The UT330B allows you to set temperature and humidity offsets, allowing you to c
     from ut330 import UT330
 
     with UT330() as ut330:      
-    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"    
-    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading offsets ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
-    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"    
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading offsets ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
     
     offsets = ut330.read_offsets()
     print offsets
@@ -212,9 +213,9 @@ Methods
 Disconnect
 ``````````
 
-Disconnects the UT330 device.
+**Description** Disconnects the UT330 device.
 
-No return value.
+**Return value** No return value.
 
 read_data
 `````````
