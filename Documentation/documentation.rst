@@ -49,9 +49,9 @@ Dependencies
 
 The UT330 object depends on the following libraries:
 
- * datetime
- * pyserial (version 3.01)
- * time
+* datetime
+* pyserial (version 3.01)
+* time
 
 If you don’t already have them, you can install them with the pip install command.
 
@@ -106,9 +106,9 @@ The temperature, humidity, and pressure data can be read from the device using t
 
     # Read data   
     with UT330() as ut330:           
-    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
     print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading data ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"   
-    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
     DATA = ut330.read_data()              
 
     if DATA != []:                  
@@ -146,9 +146,9 @@ Here’s how you change the configuration and check it’s changed using the wri
     with UT330() as ut330:           
 
     # Write config             
-    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"    
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"    
     print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Write config ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"    
-    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
     CONFIG = {'device name': 'UT330B',                       
               'sampling interval': 300,                       
               'overwrite records': False,                       
@@ -213,44 +213,74 @@ Methods
 Disconnect
 ``````````
 
-**Description** Disconnects the UT330 device.
+**Description:** Disconnects the UT330 device.
 
-**Return value** No return value.
+**Return value:** No return value.
 
 read_data
 `````````
 
+**Description:** Reads the temperature, humidity, and pressure data off the UT330B.
+
+**Return value:** Returns a data structure containing the timestamped temperature, humidity, and pressure data. Here's an example of the data returned: ::
+
+ blah {}
+
 delete_data
 ```````````
+
+**Description:** Deletes the temperature, humidity, and pressure data from the UT330.
+
+**Return value:** No return value.
 
 read_config
 ```````````
 
+**Description:**
+
+**Return value:**
+
 write_config
 ````````````
+
+**Description:**
+
+**Return value:**
 
 write_date_time
 ```````````````
 
+**Description:**
+
+**Return value:**
+
 read_offsets
 ````````````
+
+**Description:**
+
+**Return value:**
 
 write_offsets
 `````````````
 
+**Description:**
+
+**Return value:**
+
 restore_factory
 ```````````````
 
-Restores the factory settings.
+**Description:** Restores the factory settings.
 
-No return value
+**Return value:** No return value
 
 read_device_name
 ````````````````
 
-This returns the device name stripped of all leading and trailing blanks. The maximum device name length is 10 characters. 
+**Description:** This returns the device name stripped of all leading and trailing blanks. The maximum device name length is 10 characters. 
 
-Returns the device name.
+**Return value:** Returns the device name.
 
 Attributes
 ----------
@@ -261,10 +291,12 @@ Functions
 ---------
 
 Modbus
+``````
 
 This calculates a two byte Modbus CRC value. Be careful of the byte ordering when using the values. The UT330 puts the least significant byte first.
 
 Avoiding timing issues – decorators
+-----------------------------------
 
 By experiment, I found issues with sending commands and reading the responses very quickly. For example, I found that executing two consecutive read_offsets gave a zero buffer for the second read_offsets. Again by experimentation, I found a delay of 0.01s (10ms) between device commands removed the problem. 
 
@@ -287,16 +319,16 @@ The UT330B and variants
 -----------------------
 
 The UT330B is a battery powered temperature and humidity logger manufactured by Uni-Trend (uni-trend.com), a Chinese company based in Hong Kong. There are several variants of this device on the market:
-•	UT330 A – temperature only
-•	UT330 B – temperature and humidity (my device)
-•	UT330 C – temperature, humidity, and pressure
+* UT330 A – temperature only
+* UT330 B – temperature and humidity (my device)
+* UT330 C – temperature, humidity, and pressure
 
 The device is powered by a ½ AA lithium battery (please note: this is not an AA battery). This is a little hard to find and costs around $10, though you can get cheaper versions online for less. Some of the vendors on AliExpress sell the UT330 including a battery, though they charge a little more.
 
 Where to buy it
 ---------------
 
-I’ve seen this device (UT330B) on several websites worldwide. The cheapest place to buy it is from AliExpress where it costs around $35 (including shipping from China) depending on which vendor you buy from. I’ve seen the same device on Amazon in the US for around $70 and I’ve seen it on a specialist electronic supplier’s UK website for GBP 70.
+I’ve seen this device (UT330B) on several websites worldwide. The cheapest place to buy it is from `AliExpress <http://www.aliexpress.com/>`_ where it costs around $35 (including shipping from China) depending on which vendor you buy from. I’ve seen the same device on Amazon in the US for around $70 and I’ve seen it on a specialist electronic supplier’s UK website for £70.
 
 How the I found the commands and data
 -------------------------------------
