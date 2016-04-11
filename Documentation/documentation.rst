@@ -1,5 +1,9 @@
+=============================
+How to use the UT330 software
+=============================
 
 Introduction
+============
 
 I work in an office and I thought the temperature was changing more than was comfortable through the day. Sometimes I would be cold and sometimes hot. I wanted a cheap temperature logger to monitor the temperature so I could display the temperature history as a chart. 
 
@@ -8,22 +12,27 @@ I looked online (AliExpress) and found the UT330B, a USB battery powered tempera
 With this software, you can control the UT330B or other UT330 devices from any platform that runs Python and has a USB port. In the appendices, I list some of the UT330 devices and tell you where you can buy them.
 
 What’s in the software package?
+===============================
 
 All of the software was built on Python 2.7 using the Anaconda distribution.
 
 UT330
+-----
 
 This is the code that provides an interface to the UT330B. It’s fully commented and PEP8 compliant. 
 
 Test
+----
 
 This is a simple script that demonstrates all of the UT330B methods. Note that the script will delete all data on the device and do a factory reset. Please be careful using it!
 
 UI
+--
 
 This is a small system I’ve written using Bokeh to provide a UI to the device.
 
 Documentation
+-------------
 
 This text.
 
@@ -32,8 +41,10 @@ License
 The folder contains the license text for this project. I’m using the MIT License.
 
 Using the UT330 object – a short tutorial
+=========================================
 
 Dependencies
+------------
 
 The UT330 object depends on the following libraries:
 •	Datetime
