@@ -7,7 +7,7 @@ Introduction
 
 I work in an office and I thought the temperature was changing more than was comfortable through the day. Sometimes I would be cold and sometimes hot. I wanted a cheap temperature logger to monitor the temperature so I could display the temperature history as a chart. 
 
-I looked online `AliExpress <http://www.aliexpress.com/>`_ and found the UT330B, a USB battery powered temperature and humidity logger. It was cheap ($35) and did what I wanted. The only problem was, it only had Windows software to control it and I use a Mac. It worked via a USB port, so I thought I could figure out the commands sent over the USB port and build something myself. With great help from `Philip Gladstone <https://github.com/pjsg>`, I did it. This project is a result of that effort.
+I looked online on `AliExpress <http://www.aliexpress.com/>`_ and found the UT330B, a USB battery powered temperature and humidity logger. It was cheap ($35) and did what I wanted. The only problem was, it only had Windows software to control it and I use a Mac. It worked via a USB port, so I thought I could figure out the commands sent over the USB port and build something myself. With great help from `Philip Gladstone <https://github.com/pjsg>`, I did it. This project is a result of that effort.
 
 With this software, you can control the UT330B or other UT330 devices from any platform that runs Python and has a USB port. In the appendices, I list some of the UT330 devices and tell you where you can buy them.
 
