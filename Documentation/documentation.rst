@@ -48,9 +48,9 @@ Dependencies
 ------------
 
 The UT330 object depends on the following libraries:
- - datetime
- - pyserial (version 3.01)
- - time
+ * datetime
+ * pyserial (version 3.01)
+ * time
 
 If you don’t already have them, you can install them with the pip install command.
 
@@ -61,20 +61,19 @@ Connect and read the device name
 
 For any of this to work, you must connect the UT330 to a USB port on your system.
 
-The software has been designed to work with the Python with command, just like a file object. Here’s how.
+The software has been designed to work with the Python with command, just like a file object. Here’s how.::
 
-from ut330 import UT330
+    from ut330 import UT330
 
-with UT330() as ut330:                
-print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"                 
-print
-"▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading device name ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"        
-print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"              
-print "Device name = {0}".format(ut330.read_device_name())
+    with UT330() as ut330:                
+        print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"                 
+        print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading device name ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"        
+        print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"              
+        print "Device name = {0}".format(ut330.read_device_name())
 
-Here, the UT330 is opened and a variable (ut330) initialized. The function read_device_name is called on the ut330 object and the name is printed. You should see an output something like this.
+Here, the UT330 is opened and a variable (ut330) initialized. The function read_device_name is called on the ut330 object and the name is printed. You should see an output something like this.::
 
-ut330b
+    ut330b
 
 Read the offsets
 ----------------
