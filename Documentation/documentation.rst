@@ -68,7 +68,7 @@ The software has been designed to work with the Python with command, just like a
 
     with UT330() as ut330:                
         print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"                 
-        print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading device name ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"        
+        print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading device name ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"        
         print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"              
         print "Device name = {0}".format(ut330.read_device_name())
 
@@ -103,7 +103,7 @@ Reading the data
 ----------------
 
 The temperature, humidity, and pressure data can be read from the device using the read_data() method. Here’s an example that shows reading the data and printing the result. ::
-
+    
     # Read data   
     with UT330() as ut330:           
     print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
@@ -120,7 +120,7 @@ The temperature, humidity, and pressure data can be read from the device using t
                                               data_line['temperature'],
                                               data_line['humidity'],
                                               data_line['pressure'])                                                   
-        print line[:-1] 
+        print line[:-1]
 
 Change the configuration
 ------------------------
@@ -169,7 +169,7 @@ Here’s how you change the configuration and check it’s changed using the wri
 What else can you do?
 ---------------------
 
-The documentation for the UT330 class describes in more detail what’s available, but here’s a quick summary:
+The documentation for the UT330 object describes in more detail what’s available, but here’s a quick summary:
 
 * Write the date and time
 * Read and write the offsets
@@ -208,7 +208,7 @@ The UT330 object
 ================
 
 Methods
-------
+-------
 
 Disconnect
 ``````````
@@ -220,7 +220,7 @@ Disconnect
 read_data
 `````````
 
-**Description:** Reads the temperature, humidity, and pressure data off the UT330B.
+**Description:** Reads the temperature, humidity, and pressure data from the UT330B.
 
 **Return value:** Returns a data dict containing the timestamped temperature, humidity, and pressure data. Here's an example of the data returned: ::
 
@@ -229,14 +229,14 @@ read_data
 delete_data
 ```````````
 
-**Description:** Deletes the temperature, humidity, and pressure data from the UT330.
+**Description:** Deletes the temperature, humidity, and pressure data from the UT330. Note after this operation, there will be no temperature, humidity, or pressure data on the device.
 
 **Return value:** No return value.
 
 read_config
 ```````````
 
-**Description:** Reads int eh current configuration data from the device.
+**Description:** Reads in the current configuration data from the device.
 
 **Return value:** Returns a configuration dict. Here's an example of the data resturned: ::
 
@@ -245,7 +245,7 @@ read_config
 write_config
 ````````````
 
-**Description:** Writes configuration data to the device. To check that the configuration has been accepted, I suggest you read the configuration useing the read_config method. The configuration data is written using a configuration dict. Here's an example: ::
+**Description:** Writes configuration data to the device. To check that the configuration has been accepted, I suggest you read the configuration using the read_config method. The configuration data is written using a configuration dict. Here's an example: ::
 
     blah {}
 
@@ -263,7 +263,7 @@ write_date_time
 read_offsets
 ````````````
 
-**Description:**
+**Description:** Reads in the temperature, humidity, and pressure offsets for the device.
 
 **Return value:**
 
@@ -277,7 +277,7 @@ write_offsets
 restore_factory
 ```````````````
 
-**Description:** Restores the factory settings.
+**Description:** Restores the factory settings. Note this will overwrite many (if not all) settings. 
 
 **Return value:** No return value
 
@@ -286,12 +286,14 @@ read_device_name
 
 **Description:** This returns the device name stripped of all leading and trailing blanks. The maximum device name length is 10 characters. 
 
-**Return value:** Returns the device name.
+**Return value:** Returns the device name. For example: ::
+
+    ut330b
 
 Attributes
 ----------
 
-None of the attributes are designed for use outside of the object. Use them at your own risk.
+None of the attributes are designed for use outside of the UT330 object. Use them at your own risk.
 
 Functions
 ---------
@@ -317,9 +319,9 @@ Appendix
 Limitations
 -----------
 
-I couldn’t find a reliable way to uniquely identify the UT330 device, so I used the pid and vid. This might not uniquely identify the device and it’s possible that other USB devices report the same values. I’m open to suggestions for uniquely identifying the device.
+I couldn’t find a reliable way to uniquely identify the UT330 device, so I used the pid and vid values returned by ?????. This might not uniquely identify the device because it’s possible that other USB devices report the same values. I’m open to suggestions for uniquely identifying UT330 devices.
 
-I couldn’t identify the use of all bytes in the responses. For example, when reading the XXX, I don’t know what bytes YYYY are. If anyone knows, please let me know.
+I couldn’t identify the use of all bytes in the responses. For example, when reading the XXX, I don’t know what bytes YYYY are. In all cases where I couldn't identify what bytes are used for, I've put comments in the code. If anyone knows, please let me know.
 
 The UT330B and variants
 -----------------------
@@ -331,17 +333,19 @@ The UT330B is a battery powered temperature and humidity logger manufactured by 
 
 The device is powered by a ½ AA lithium battery (please note: this is not an AA battery). This is a little hard to find and costs around $10, though you can get cheaper versions online for less. Some of the vendors on AliExpress sell the UT330 including a battery, though they charge a little more.
 
+Because my device (UT330B) has temperature and pressure only, I've not been able to test any pressure functionality. 
+
 Where to buy it
 ---------------
 
 I’ve seen this device (UT330B) on several websites worldwide. The cheapest place to buy it is from `AliExpress <http://www.aliexpress.com/>`_ where it costs around $35 (including shipping from China) depending on which vendor you buy from. I’ve seen the same device on Amazon in the US for around $70 and I’ve seen it on a specialist electronic supplier’s UK website for £70.
 
-How the I found the commands and data
--------------------------------------
+How I found the commands and data
+----------------------------------
 
 I did this with a great deal of help from `Philip Gladstone <https://github.com/pjsg/>`_.
 
-We set up a Windows machine and installed the UT330 software. We also installed USB monitoring software. This monitoring software displayed all of the data exchanged between the UT330B device and the UT330 software.
+We set up a Windows machine and installed the UT330 software. We also installed USB monitoring software. This monitoring software displayed all of the data exchanged on the USB port between the UT330B device and the UT330 software.
 
 We then used the UT330 software to send commands to the UT330 device, for example, clicking on the factory reset button, synching the time etc.
 
