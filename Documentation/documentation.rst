@@ -189,8 +189,8 @@ To try this code, you’ll need to install the Bokeh project. To do this, type: 
 
     pip install bokeh
 
-Starting the UI
----------------
+Starting the UI server
+----------------------
 
 The Bokeh application here uses the Bokeh server to provide a web interface. To run the application, you’ll need to start the Bokeh server. From a console, type in: ::
 
@@ -222,7 +222,7 @@ read_data
 
 **Description:** Reads the temperature, humidity, and pressure data off the UT330B.
 
-**Return value:** Returns a data structure containing the timestamped temperature, humidity, and pressure data. Here's an example of the data returned: ::
+**Return value:** Returns a data dict containing the timestamped temperature, humidity, and pressure data. Here's an example of the data returned: ::
 
  blah {}
 
@@ -236,23 +236,29 @@ delete_data
 read_config
 ```````````
 
-**Description:**
+**Description:** Reads int eh current configuration data from the device.
 
-**Return value:**
+**Return value:** Returns a configuration dict. Here's an example of the data resturned: ::
+
+    blah {}
 
 write_config
 ````````````
 
-**Description:**
+**Description:** Writes configuration data to the device. To check that the configuration has been accepted, I suggest you read the configuration useing the read_config method. The configuration data is written using a configuration dict. Here's an example: ::
 
-**Return value:**
+    blah {}
+
+**Return value:** None.
 
 write_date_time
 ```````````````
 
-**Description:**
+**Description:** Writes the data nd time to the device. The date and time is passed in as a Python datetime object as shown in this example: ::
 
-**Return value:**
+    blah {}
+
+**Return value:** None.
 
 read_offsets
 ````````````
