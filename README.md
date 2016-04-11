@@ -11,4 +11,4 @@ This project is a complete package, including software, a test script, a demo UI
 Acknowledgements
 ================
 
-Many thanks to Philip Gladstone (@pjsg) for his tremnedous help with this project.
+Many thanks to Philip Gladstone (@pjsg) for his tremendous help with this project.
