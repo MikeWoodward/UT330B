@@ -102,7 +102,7 @@ The UT330B does not have a pressure sensor, so the pressure offset is irrelevant
 Reading the data
 ----------------
 
-The temperature, humidity, and pressure data can be read from the device using the read_data(method). Here’s an example that shows reading the data and printing the result. ::
+The temperature, humidity, and pressure data can be read from the device using the read_data() method. Here’s an example that shows reading the data and printing the result. ::
 
     # Read data   
     with UT330() as ut330:           
