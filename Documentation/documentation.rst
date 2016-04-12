@@ -9,6 +9,8 @@ I work in an office and I thought the temperature was changing more than was com
 
 I looked online on `AliExpress <http://www.aliexpress.com/>`_ and found the UT330B, a USB battery powered temperature and humidity logger. It was cheap ($35) and did what I wanted. The only problem was, it only had Windows software to control it and I use a Mac. The UT330B worked via a USB port, so I thought I could figure out the commands sent over the USB port and build something myself. With great help from `Philip Gladstone <https://github.com/pjsg>`_, I did it. This project is a result of that effort.
 
+.. image:: UT330B.png
+
 With this software, you can control the UT330B, or other UT330 devices, from any platform that runs Python and has a USB port. In the appendices, I list some of the UT330 devices and tell you where you can buy them.
 
 What’s in the software package?
