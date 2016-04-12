@@ -215,82 +215,126 @@ Methods
 -------
 
 Disconnect
-``````````
+`````````
 
-**Description:** Disconnects the UT330 device.
+**Description**: Disconnects the UT330 device.
 
-**Return value:** No return value.
+**Return value**: No return value.
 
 read_data
 `````````
 
-**Description:** Reads the temperature, humidity, and pressure data from the UT330B.
+**Description**: Reads the temperature, humidity, and pressure data from the UT330B.
 
-**Return value:** Returns a data dict containing the timestamped temperature, humidity, and pressure data. Here's an example of the data returned: ::
+**Return value**: Returns a data dict containing the timestamped temperature, humidity, and pressure data. Here's an example of the data returned: ::
 
- blah {}
-
+    [{'timestamp': datetime.datetime(2016, 4, 7, 18, 21, 27), 'pressure': 0.0, 'temperature': 25.0, 'humidity': 47.1},
+     {'timestamp': datetime.datetime(2016, 4, 7, 18, 26, 27), 'pressure': 0.0, 'temperature': 24.4, 'humidity': 47.6},
+     {'timestamp': datetime.datetime(2016, 4, 7, 18, 31, 27), 'pressure': 0.0, 'temperature': 24.2, 'humidity': 48.4},
+     {'timestamp': datetime.datetime(2016, 4, 7, 18, 36, 27), 'pressure': 0.0, 'temperature': 24.1, 'humidity': 48.6},
+     {'timestamp': datetime.datetime(2016, 4, 7, 18, 41, 27), 'pressure': 0.0, 'temperature': 24.0, 'humidity': 48.6}]
+     
 delete_data
 ```````````
 
-**Description:** Deletes the temperature, humidity, and pressure data from the UT330. Note after this operation, there will be no temperature, humidity, or pressure data on the device.
+**Description**: Deletes the temperature, humidity, and pressure data from the UT330. Note after this operation, there will be no temperature, humidity, or pressure data on the device.
 
-**Return value:** No return value.
+Return value: No return value.
 
 read_config
 ```````````
 
-**Description:** Reads in the current configuration data from the device.
+**Description**: Reads in the current configuration data from the device.
 
-**Return value:** Returns a configuration dict. Here's an example of the data resturned: ::
+**Return value**: Returns a configuration dict. Here's an example of the data returned:
 
-    blah {}
+     {'readings limit': 60000,
+      'low humidity alarm': 10,
+      'high humidity alarm': 95,
+      'overwrite records': False,
+      'battery power': 100,
+      'low temperature alarm': -10,
+      'timestamp': datetime.datetime(2016, 4, 11, 20, 25, 3),
+      'sampling interval': 300,
+      'delay start': True,
+      'delay timing': 120,
+      'device name': 'UT330B',
+      'high temperature alarm': 40,
+      'readings count': 1173}
 
 write_config
 ````````````
 
-**Description:** Writes configuration data to the device. To check that the configuration has been accepted, I suggest you read the configuration using the read_config method. The configuration data is written using a configuration dict. Here's an example: ::
+**Description**: Writes configuration data to the device. To check that the configuration has been accepted, I suggest you read the configuration using the read_config method. The configuration data is written using a configuration dict. Here's an example: ::
 
-    blah {}
+    CONFIG = {'device name': 'UT330B',
+              'sampling interval': 300,
+              'overwrite records': False,
+              'delay timing': 120,
+              'delay start': True,
+              'high temperature alarm': 40,
+              'low temperature alarm': -10,
+              'high humidity alarm': 95,
+              'low humidity alarm': 10}
 
-**Return value:** None.
+    with UT330() as ut330:
+        ut330.write_config(CONFIG)
+
+**Return value**: None.
 
 write_date_time
 ```````````````
 
-**Description:** Writes the data nd time to the device. The date and time is passed in as a Python datetime object as shown in this example: ::
+**Description**: Writes the data and time to the device. The date and time is passed in as a Python datetime object as shown in this example: ::
 
-    blah {}
-
-**Return value:** None.
+    with UT330() as ut330:
+        NOW = datetime.datetime.now()
+        ut330.write_date_time(NOW)
+        
+**Return value**: None.
 
 read_offsets
 ````````````
 
-**Description:** Reads in the temperature, humidity, and pressure offsets for the device.
+**Description**: Reads in the temperature, humidity, and pressure offsets for the device. Here's an example of the data returned. ::
 
-**Return value:**
+    {'temperature offset': 0.0,
+     'temperature': 21.8,
+     'humidity': 39.9,
+     'pressure': 0.0,
+     'humidity offset': 0.0,
+     'pressure offset': 0.0}
+     
+**Return value**: None.
 
 write_offsets
 `````````````
 
-**Description:**
+**Description**: Writes the temperature, humidity, and pressure offset data to the device. The offsets are passed in as a dict as shown here. ::
 
-**Return value:**
+    with UT330() as ut330:
+
+        OFFSETS = {'temperature offset': 0,
+                   'humidity offset': 0,
+                   'pressure offset': 0}
+
+        ut330.write_offsets(OFFSETS)
+    
+**Return value**: None.
 
 restore_factory
 ```````````````
 
-**Description:** Restores the factory settings. Note this will overwrite many (if not all) settings. 
+**Description**: Restores the factory settings. Note this will overwrite many (if not all) settings.
 
-**Return value:** No return value
+**Return value**: No return value
 
 read_device_name
 ````````````````
 
-**Description:** This returns the device name stripped of all leading and trailing blanks. The maximum device name length is 10 characters. 
+**Description**: This returns the device name stripped of all leading and trailing blanks. The maximum device name length is 10 characters.
 
-**Return value:** Returns the device name. For example: ::
+**Return value**: Returns the device name. For example: ::
 
     ut330b
 
