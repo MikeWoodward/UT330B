@@ -207,7 +207,7 @@ Running the UI
 
 To run the UI, run the file UI.py. This should start a browser and you should see something like this.
 
-.. image::UI.png
+.. image::images/UI.png
 
 
 The UT330 object
