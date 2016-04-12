@@ -517,7 +517,7 @@ By experiment, I found issues with sending commands and reading the responses ve
 
 However, we don’t need the delay all of the time. If it’s been more than 10ms since the last command, there’s no point adding a delay.
 
-I implemented this conditional delay using Python’s method decorators. This is the function ??? that appears as the method decorator @????
+I implemented this conditional delay using Python’s method decorators. This is the function buffer_safety that appears as the method decorator @buffer_safety.
 
 
 Appendix
