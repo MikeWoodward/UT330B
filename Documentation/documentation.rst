@@ -279,7 +279,7 @@ restore_factory
 
 **Description:** Restores the factory settings. Note this will overwrite many (if not all) settings. 
 
-**Return value:** No return value
+**Return value:** No return valuen
 
 read_device_name
 ````````````````
