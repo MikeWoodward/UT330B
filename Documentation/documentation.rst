@@ -106,14 +106,14 @@ The temperature, humidity, and pressure data can be read from the device using t
     
     # Read data   
     with UT330() as ut330:           
-    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
-    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading data ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"   
-    print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
-    DATA = ut330.read_data()              
+        print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+        print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Reading data ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"   
+        print "▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉"     
+        DATA = ut330.read_data()              
 
     if DATA != []:                  
 
-    print  'Timestamp, Temperature (C), Relative humidity (%), Pressure (Pa)\n'   
+        print  'Timestamp, Temperature (C), Relative humidity (%), Pressure (Pa)\n'   
     
     for data_line in DATA:                          
         line = "{0}, {1}, {2}, {3}\n". format(data_line['timestamp'],
