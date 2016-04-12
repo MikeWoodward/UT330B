@@ -360,7 +360,7 @@ Avoiding timing issues – decorators
 
 By experiment, I found issues with sending commands and reading the responses very quickly. For example, I found that executing two consecutive read_offsets gave a zero buffer for the second read_offsets. Again by experimentation, I found a delay of 0.01s (10ms) between device commands removed the problem. 
 
-However, we don’t need the delay all of the time. If it’s been more than 10ms since the last command, there’s no point adding a delay.
+However, we don’t need the delay all of the time. If it’s been more than 10ms since the last command, there’s no point adding a delay. That's why I added the attribute _last_op_time to the UT330 object to check the when the last command was issued. If it was over 10ms, there's no delay.
 
 I implemented this conditional delay using Python’s method decorators. This is the function buffer_safety that appears as the method decorator @buffer_safety.
 
@@ -371,7 +371,7 @@ Appendix
 Limitations
 -----------
 
-I couldn’t find a reliable way to uniquely identify the UT330 device, so I used the pid and vid values returned byserial.tools.list_ports.comports This might not uniquely identify the device because it’s possible that other USB devices report the same values. I’m open to suggestions for uniquely identifying UT330 devices.
+I couldn’t find a reliable way to uniquely identify the UT330 device, so I used the pid and vid values returned by serial.tools.list_ports.comports This might not uniquely identify the device because it’s possible that other USB devices report the same values. I’m open to suggestions for uniquely identifying UT330 devices.
 
 I couldn’t identify the use of all bytes in the responses. For example, when reading the configuration, I don’t know what bytes 15-19 are. In all cases where I couldn't identify what bytes are used for, I've put comments in the code. If anyone knows, please let me know.
 
@@ -385,12 +385,12 @@ The UT330B is a battery powered temperature and humidity logger manufactured by 
 
 The device is powered by a ½ AA lithium battery (please note: this is not an AA battery). This is a little hard to find and costs around $10, though you can get cheaper versions online for less. Some of the vendors on AliExpress sell the UT330 including a battery, though they charge a little more.
 
-Because my device (UT330B) has temperature and pressure only, I've not been able to test any pressure functionality. 
+Because my device (UT330B) has temperature and humidity only, I've not been able to test any pressure functionality. 
 
 Where to buy it
 ---------------
 
-I’ve seen this device (UT330B) on several websites worldwide. The cheapest place to buy it is from `AliExpress <http://www.aliexpress.com/>`_ where it costs around $35 (including shipping from China) depending on which vendor you buy from. I’ve seen the same device on Amazon in the US for around $70 and I’ve seen it on a specialist electronic supplier’s UK website for £70.
+I’ve seen this device (UT330B) on several websites worldwide. The cheapest place to buy it is from `AliExpress <http://www.aliexpress.com/>`_ where it costs around $35 (including shipping from China), depending on which vendor you buy from. I’ve seen the same device on Amazon in the US for around $70 and I’ve seen it on a specialist electronic supplier’s UK website for £70.
 
 How I found the commands and data
 ----------------------------------
