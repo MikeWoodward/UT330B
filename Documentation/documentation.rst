@@ -246,7 +246,7 @@ read_config
 
 **Description**: Reads in the current configuration data from the device.
 
-**Return value**: Returns a configuration dict. Here's an example of the data returned:
+**Return value**: Returns a configuration dict. Here's an example of the data returned: ::
 
      {'readings limit': 60000,
       'low humidity alarm': 10,
