@@ -141,7 +141,7 @@ As well as read data from the UT330B, you can also change its settings. Here, I�
 
 The UT330 code shows the valid ranges for these variables, for example, you can have at most ten characters as the device name.
 
-Here’s how you change the configuration and check it’s changed using the write_config() and read_config() methods. ::
+Here’s how you change the configuration and check its changed using the write_config() and read_config() methods. ::
 
     with UT330() as ut330:           
 
