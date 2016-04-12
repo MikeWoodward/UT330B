@@ -141,7 +141,7 @@ To do this, we have to create a dict which must be defined like this: ::
 
 The UT330 code shows the valid ranges for these variables, for example, you can have at most ten characters as the device name.
 
-Here’s how you change the configuration and check it’s changed using the write_config() and read_config methods(). ::
+Here’s how you change the configuration and check it’s changed using the write_config() and read_config() methods. ::
 
     with UT330() as ut330:           
 
