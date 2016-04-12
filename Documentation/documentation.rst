@@ -526,9 +526,9 @@ Appendix
 Limitations
 -----------
 
-I couldn’t find a reliable way to uniquely identify the UT330 device, so I used the pid and vid values returned by ?????. This might not uniquely identify the device because it’s possible that other USB devices report the same values. I’m open to suggestions for uniquely identifying UT330 devices.
+I couldn’t find a reliable way to uniquely identify the UT330 device, so I used the pid and vid values returned byserial.tools.list_ports.comports This might not uniquely identify the device because it’s possible that other USB devices report the same values. I’m open to suggestions for uniquely identifying UT330 devices.
 
-I couldn’t identify the use of all bytes in the responses. For example, when reading the XXX, I don’t know what bytes YYYY are. In all cases where I couldn't identify what bytes are used for, I've put comments in the code. If anyone knows, please let me know.
+I couldn’t identify the use of all bytes in the responses. For example, when reading the configuration, I don’t know what bytes 15-19 are. In all cases where I couldn't identify what bytes are used for, I've put comments in the code. If anyone knows, please let me know.
 
 The UT330B and variants
 -----------------------
