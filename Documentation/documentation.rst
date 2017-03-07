@@ -57,7 +57,7 @@ The UT330 object depends on the following libraries:
 
 If you don’t already have them, you can install them with the pip install command.
 
-You may also have to install a device driver. If this is the case, please let me know and I’ll add details.
+You will need to install the SiLab driver for your OS. It's the USB to UART driver. You can download the driver from here: https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers
 
 Connect and read the device name
 --------------------------------
