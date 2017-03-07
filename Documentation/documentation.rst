@@ -52,7 +52,7 @@ Dependencies
 The UT330 object depends on the following libraries:
 
 * datetime
-* pyserial (version 3.01)
+* pyserial (version 3.01 or later)
 * time
 
 If you don’t already have them, you can install them with the pip install command.
