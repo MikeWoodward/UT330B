@@ -118,10 +118,10 @@ The temperature, humidity, and pressure data can be read from the device using t
             print  'Timestamp, Temperature (C), Relative humidity (%), Pressure (Pa)\n'   
     
             for data_line in DATA:                          
-                line = "{0}, {1}, {2}, {3}\n". format(data_line['timestamp'],
-                                                      data_line['temperature'],
-                                                      data_line['humidity'],
-                                                      data_line['pressure'])                                                   
+                line = "{0}, {1}, {2}, {3}\n". format(data_line['Timestamp'],
+                                                      data_line['Temperature (C)'],
+                                                      data_line['Relative humidity (%)'],
+                                                      data_line['Pressure (Pa)'])                                                   
                 print line[:-1]
 
 Change the configuration
