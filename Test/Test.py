@@ -9,7 +9,9 @@ Created on Mon Mar 21 10:11:25 2016
 # Imports
 # =============================================================================
 import datetime
-from UT330 import UT330
+import sys
+sys.path.insert(0, r'..')
+from UT330.UT330 import UT330
 
 # =============================================================================
 # Main
@@ -82,8 +84,8 @@ if __name__ == '__main__':
 
                 with open(DATA_FILE, 'w') as data_file:
 
-                    HEADER = 'Timestamp, Temperature (C), ' \
-                             'Relative humidity (%), '\
+                    HEADER = 'Timestamp,Temperature (C),' \
+                             'Relative humidity (%),' \
                              'Pressure (Pa)\n'
 
                     data_file.write(HEADER)
@@ -93,10 +95,10 @@ if __name__ == '__main__':
                     for data_line in DATA:
 
                         line = "{0}, {1}, {2}, {3}\n". \
-                               format(data_line['timestamp'],
-                                      data_line['temperature'],
-                                      data_line['humidity'],
-                                      data_line['pressure'])
+                               format(data_line['Timestamp'],
+                                      data_line['Temperature (C)'],
+                                      data_line['Relative humidity (%)'],
+                                      data_line['Pressure (Pa)'])
 
                         data_file.write(line)
 

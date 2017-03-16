@@ -53,7 +53,7 @@ def buffer_safety(func):
            < datetime.timedelta(0, 0, 10000):
             time.sleep(0.01)
 
-        # Read functions have no argumetns, write functions have one
+        # Read functions have no arguments, write functions have one
         if argument is None:
 
             data = func(self)
@@ -111,7 +111,10 @@ table = (
 def modbusCRC(data):
 
     """Returns the Modbus CRC as two bytes. Be careful of the order."""
-
+    
+    # If the contnets of the data list are not all integers, this function
+    # will have problems. Future action is to check all elements are ints
+    
     crc = 0xFFFF
 
     for number in data:
@@ -157,8 +160,17 @@ class UT330(object):
         # Index to the position of the current element being processed
         self._index = 0
 
+        # Time to wait before timing out
         self._read_timeout = 5
         self._write_timeout = 5
+
+    def __del__(self):
+
+        self.disconnect()
+
+    def connect(self):
+
+        """Connects to the device or raises an error"""
 
         # Get the port the device is connected to
         # ---------------------------------------
@@ -179,7 +191,7 @@ class UT330(object):
 
         if port is None:
             raise IOError('Error! The UT330 device was not detected on any '
-                          'USB port')
+                          'USB port.')
 
         # Attempt a connection to the port
         # --------------------------------
@@ -189,12 +201,15 @@ class UT330(object):
                                     write_timeout=self._write_timeout)
 
         # Check that the serial port is open
+        # ----------------------------------
         if not self._ut330.isOpen():
-            raise IOError('Error! UT330 is not open.')
+            raise IOError('Error! The UT330 is not open on the serial port.')
 
     def __enter__(self):
 
         """Function to make this class work with Python's with statement"""
+
+        self.connect()
 
         return self
 
@@ -350,10 +365,10 @@ class UT330(object):
 
             self._index += 4
 
-            data.append({'timestamp': timestamp,
-                         'temperature': temperature,
-                         'humidity': humidity,
-                         'pressure': pressure})
+            data.append({'Timestamp': timestamp,
+                         'Temperature (C)': temperature,
+                         'Relative humidity (%)': humidity,
+                         'Pressure (Pa)': pressure})
 
         return data
 
