@@ -75,7 +75,7 @@ if __name__ == '__main__':
 
             if DATA != []:
 
-                TIMESTAMP = DATA[0]['timestamp']
+                TIMESTAMP = DATA[0]['Timestamp']
 
                 # Write the data to file
 
