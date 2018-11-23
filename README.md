@@ -12,3 +12,8 @@ Acknowledgements
 ================
 
 Many thanks to [Philip Gladstone](https://github.com/pjsg) for his tremendous help with this project.
+
+Installation notes
+==================
+
+Use pyserial __version 3.01 or later__
