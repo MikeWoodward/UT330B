@@ -17,3 +17,8 @@ Installation notes
 ==================
 
 Use pyserial __version 3.01 or later__
+
+Dependency issues
+=================
+
+In July 2019, I've become aware that there are some issues with this software and the latest version of Bokeh, specifically, some of the radio buttons don't work. I have a plan to resolve all these issues and make some upgrades to the software, but this will take a month or two.
