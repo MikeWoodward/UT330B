@@ -1,5 +1,5 @@
 # UT330B
-Operating system independent controller for the Uni-Trend UT330B temperature and humidity logger
+Operating system independent controller for the Uni-Trend UT330B temperature and humidity logger.
 
 What the software does
 ======================
@@ -17,3 +17,8 @@ Installation notes
 ==================
 
 The project uses uses pyserial __version 3.01 or later__. This version uses Bokeh version 1.4.0. See the Documentation section for instructions for how to use the software.
+
+Oddities
+========
+
+I updated this software in February 2020. For some unknown reason, the UT330B device won't accept date settings in February 2020, and won't function in February 2020. I think this is a device issue (maybe firmware?) but I can't confirm it. If anyone has any insight, I'd love to hear it.
