@@ -33,11 +33,11 @@ Note that the script might delete all data on the device and do a factory reset 
 UT330BUI
 --------
 
-This is a complete app to control the UT330B devices using the UT330 class. It's written using Bokeh 1.4.0. To run the software, go to the folder above the UT330B folder and type in: ::
+This is a complete app to control the UT330B devices using the UT330 class. It's written using Bokeh 1.4.0. To run the software, go to the folder above the UT330BUI folder and type in: ::
 
     bokeh serve UT330BUI --show
 
-The code is structed as a model-view-controller architecture.
+The code is structured as a model-view-controller architecture.
 
 controller
     controller.py - this controls the software.
@@ -218,8 +218,8 @@ The Bokeh application here uses the Bokeh server to provide a web interface. To 
     bokeh serve UT330BUI --show
 
 
-The UT330 object
-================
+The UT330 object's interface
+============================
 
 Methods
 -------
@@ -385,9 +385,9 @@ The UT330B and variants
 -----------------------
 
 The UT330B is a battery powered temperature and humidity logger manufactured by Uni-Trend (uni-trend.com), a Chinese company based in Hong Kong. There are several variants of this device on the market:
-* UT330 A – temperature only
-* UT330 B – temperature and humidity (my device)
-* UT330 C – temperature, humidity, and pressure
+``*`` UT330 A – temperature only
+``*`` UT330 B – temperature and humidity (my device)
+``*`` UT330 C – temperature, humidity, and pressure
 
 The device is powered by a ½ AA lithium battery (please note: this is not an AA battery). This is a little hard to find and costs around $10, though you can get cheaper versions online for less. Some of the vendors on AliExpress sell the UT330 including a battery, though they charge a little more.
 
