@@ -198,39 +198,24 @@ The documentation for the UT330 object describes in more detail what’s availab
 * Delete the data
 * Do a factory reset on the device
 
-The UT330 UI
-============
+UT330BUI
+========
 
 Background
 ----------
 
-I wanted some way of displaying a chart and updating configuration settings using a UI. I could have done this with JavaScript and linked to Python, but I wanted to try out the Bokeh visualization package. I got something up and running, so I thought I would include it here.
+I wanted some way of displaying a chart and updating configuration settings using a UI. I could have done this with JavaScript and linked to Python, but I wanted to try out the Bokeh visualization package. 
 
 To try this code, you’ll need to install the Bokeh project. To do this, type: ::
 
     pip install bokeh
 
-Starting the UI server
-----------------------
+Starting the software
+---------------------
 
-The Bokeh application here uses the Bokeh server to provide a web interface. To run the application, you’ll need to start the Bokeh server. From a console, type in: ::
+The Bokeh application here uses the Bokeh server to provide a web interface. To run the application ::
 
-    bokeh serve
-
-Once the server starts, you should see something like this in the console window. ::
-
-    DEBUG:bokeh.server.tornado:Allowed Host headers: ['localhost:5006']
-    DEBUG:bokeh.server.tornado:These host origins can connect to the websocket: ['localhost:5006']
-    DEBUG:bokeh.server.tornado:Patterns are: [('/?', <class 'bokeh.server.views.doc_handler.DocHandler'>, {'application_context': <bokeh.server.application_context.ApplicationContext object at 0x106194150>, 'bokeh_websocket_path': '/ws'}), ('/ws', <class 'bokeh.server.views.ws.WSHandler'>, {'application_context': <bokeh.server.application_context.ApplicationContext object at 0x106194150>, 'bokeh_websocket_path': '/ws'}), ('/autoload.js', <class 'bokeh.server.views.autoload_js_handler.AutoloadJsHandler'>, {'application_context': <bokeh.server.application_context.ApplicationContext object at 0x106194150>, 'bokeh_websocket_path': '/ws'}), ('/static/(.*)', <class 'bokeh.server.views.static_handler.StaticHandler'>)]
-    INFO:bokeh.command.subcommands.serve:Starting Bokeh server on port 5006 with applications at paths ['/']
-
-
-Running the UI
---------------
-
-To run the UI, run the file UI.py. This should start a browser and you should see something like this.
-
-.. image:: UI.png
+    bokeh serve UT330BUI --show
 
 
 The UT330 object
@@ -307,8 +292,8 @@ write_config
 
 **Return value**: None.
 
-write_date_time
-```````````````
+write_datetime
+``````````````
 
 **Description**: Writes the data and time to the device. The date and time is passed in as a Python datetime object as shown in this example: ::
 
