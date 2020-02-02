@@ -385,8 +385,11 @@ The UT330B and variants
 -----------------------
 
 The UT330B is a battery powered temperature and humidity logger manufactured by Uni-Trend (uni-trend.com), a Chinese company based in Hong Kong. There are several variants of this device on the market:
+
 ``*`` UT330 A – temperature only
+
 ``*`` UT330 B – temperature and humidity (my device)
+
 ``*`` UT330 C – temperature, humidity, and pressure
 
 The device is powered by a ½ AA lithium battery (please note: this is not an AA battery). This is a little hard to find and costs around $10, though you can get cheaper versions online for less. Some of the vendors on AliExpress sell the UT330 including a battery, though they charge a little more.
