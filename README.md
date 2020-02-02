@@ -1,10 +1,10 @@
 # UT330B
-Operating system independent controller for the Uni-Trend UT330B temperature and humidity logger
+Operating system independent controller for the Uni-Trend UT330B temperature and humidity logger.
 
 What the software does
 ======================
 
-The [Uni-Trend (UNI-T) UT330A, UT330B, UT330C](http://www.uni-trend.com/Productslist_1121_1121_1121_1121.html>) is a battery-powered USB temperature and humidity logger. Off-the-shelf, it only comes with Windows control software. This project provides Python code to control the device from any operating system.
+The [Uni-Trend UT330B](https://www.uni-trend.com/html/product/Environmental/Environmental_Tester/UT330-USB/UT330B.html) is a battery-powered USB temperature and humidity logger. Off-the-shelf, it only comes with Windows control software. This project provides Python code to control the device from any operating system.
 
 This project is a complete package, including software, a test script, a demo UI (written in Bokeh), and full documentation. 
 
@@ -16,9 +16,9 @@ Many thanks to [Philip Gladstone](https://github.com/pjsg) for his tremendous he
 Installation notes
 ==================
 
-Use pyserial __version 3.01 or later__
+The project uses uses pyserial __version 3.01 or later__. This version uses Bokeh version 1.4.0. See the Documentation section for instructions for how to use the software.
 
-Dependency issues
-=================
+Oddities
+========
 
-In July 2019, I've become aware that there are some issues with this software and the latest version of Bokeh, specifically, some of the radio buttons don't work. I have a plan to resolve all these issues and make some upgrades to the software, but this will take a month or two.
+I updated this software in February 2020. For some unknown reason, the UT330B device won't accept date settings in February 2020, and won't function in February 2020. I think this is a device issue (maybe firmware?) but I can't confirm it. If anyone has any insight, I'd love to hear it.

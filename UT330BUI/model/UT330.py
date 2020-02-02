@@ -23,8 +23,8 @@ Created on Wed Mar  2 18:10:21 2016
 # Imports
 # =============================================================================
 import datetime
-import serial.tools.list_ports
 import time
+import serial.tools.list_ports
 
 
 # =============================================================================
@@ -49,7 +49,7 @@ def buffer_safety(func):
     def buffer_protection(self, argument=None):
 
         # If we're less than 10ms since the last call, wait 10ms
-        if datetime.datetime.now() - self._last_op_time \
+        if datetime.datetime.now() - self.last_op_time \
            < datetime.timedelta(0, 0, 10000):
             time.sleep(0.01)
 
@@ -64,7 +64,7 @@ def buffer_safety(func):
 
         # We don't know how long the operation took, so use the current time
         # as the last op time
-        self._last_op_time = datetime.datetime.now()
+        self.last_op_time = datetime.datetime.now()
 
         return data
 
@@ -73,7 +73,7 @@ def buffer_safety(func):
 # =============================================================================
 # Functions
 # =============================================================================
-table = (
+TABLE = (
     0x0000, 0xC0C1, 0xC181, 0x0140, 0xC301, 0x03C0, 0x0280, 0xC241,
     0xC601, 0x06C0, 0x0780, 0xC741, 0x0500, 0xC5C1, 0xC481, 0x0440,
     0xCC01, 0x0CC0, 0x0D80, 0xCD41, 0x0F00, 0xCFC1, 0xCE81, 0x0E40,
@@ -111,14 +111,14 @@ table = (
 def modbusCRC(data):
 
     """Returns the Modbus CRC as two bytes. Be careful of the order."""
-    
+
     # If the contnets of the data list are not all integers, this function
     # will have problems. Future action is to check all elements are ints
-    
+
     crc = 0xFFFF
 
     for number in data:
-        crc = (crc >> 8) ^ table[(crc ^ number) & 0xFF]
+        crc = (crc >> 8) ^ TABLE[(crc ^ number) & 0xFF]
 
     MSB = crc >> 8  # Most Significant Byte
     LSB = crc & 255  # Least Significant Byte
@@ -129,7 +129,7 @@ def modbusCRC(data):
 # =============================================================================
 # class UT330
 # =============================================================================
-class UT330(object):
+class UT330():
 
     """Provides an object-based interface to the UT330.
 
@@ -145,11 +145,12 @@ class UT330(object):
     # 0x51 - get device name
     """
 
+    # %%
     def __init__(self):
 
         # The time of the last function call. Set to min initially because
         # there hasn't been a last call when the software starts.
-        self._last_op_time = datetime.datetime.min
+        self.last_op_time = datetime.datetime.min
 
         # The PySerial object
         self._ut330 = None
@@ -164,10 +165,12 @@ class UT330(object):
         self._read_timeout = 5
         self._write_timeout = 5
 
+    # %%
     def __del__(self):
 
         self.disconnect()
 
+    # %%
     def connect(self):
 
         """Connects to the device or raises an error"""
@@ -178,6 +181,7 @@ class UT330(object):
 
         # Get all the serial ports
         port_list = serial.tools.list_ports.comports()
+        serial.tools.list_ports.comports
 
         # Now find which port has our device
         for trial in port_list:
@@ -186,7 +190,6 @@ class UT330(object):
             # give a false report if another device using the same controller
             # is connected. However, I can't find a more specific check.
             if trial.vid == 4292 and trial.pid == 60000:
-
                 port = trial
 
         if port is None:
@@ -205,6 +208,7 @@ class UT330(object):
         if not self._ut330.isOpen():
             raise IOError('Error! The UT330 is not open on the serial port.')
 
+    # %%
     def __enter__(self):
 
         """Function to make this class work with Python's with statement"""
@@ -213,12 +217,14 @@ class UT330(object):
 
         return self
 
+    # %%
     def __exit__(self, type_ex, value_ex, traceback_ex):
 
         """Function to make this class work with Python's with statement"""
 
         self.disconnect()
 
+    # %%
     def _read_buffer(self, byte_count):
 
         """Reads the contents of the buffer and returns it as an integer list.
@@ -232,16 +238,13 @@ class UT330(object):
 
         # Read in data in as large chuncks as possible to speed up reading.
         # Read in the largest possible chunks first.
-        for i in range(byte_count / page_size):
-
+        for i in range(int(byte_count/page_size)):
             self._buffer += self._ut330.read(page_size)
 
         # Now read in the smallest chunk.
         self._buffer += self._ut330.read(byte_count % page_size)
 
-        # Return the data as an integer list
-        self._buffer = [ord(i) for i in self._buffer]
-
+    # %%
     def _write_buffer(self):
 
         """Writes the command string to the buffer"""
@@ -252,6 +255,7 @@ class UT330(object):
             raise ValueError('Error! _write_buffer: not all command bytes '
                              'written')
 
+    # %%
     def _get_datetime(self):
 
         """Returns the date and time as a timestamp"""
@@ -264,6 +268,7 @@ class UT330(object):
                                       self._buffer[self._index + 5])
         return timestamp
 
+    # %%
     def _get_temperature(self):
 
         """Returns the temperature from the device buffer data - including
@@ -281,6 +286,7 @@ class UT330(object):
 
         return temperature
 
+    # %%
     def _get_name(self):
 
         """Retrieves the device name from the buffer data"""
@@ -289,6 +295,7 @@ class UT330(object):
 
         return ''.join(chr(entry) for entry in temp).strip()
 
+    # %%
     def disconnect(self):
 
         """Disconnect the device"""
@@ -296,6 +303,7 @@ class UT330(object):
         if self._ut330 is not None:
             self._ut330.close()
 
+    # %%
     @buffer_safety
     def read_data(self):
 
@@ -318,8 +326,8 @@ class UT330(object):
         self._read_buffer(8)
 
         # Check that some data has actually been returned
-        if 0 == len(self._buffer):
-            print "Warning! Empty buffer returned by device "
+        if len(self._buffer) == 0:
+            print("Warning! Empty buffer returned by device")
             return []
 
         # Get the length of data in the buffer
@@ -334,8 +342,8 @@ class UT330(object):
             # returning - gives an error later if this isn't done.
             self._read_buffer(2)
 
-            print "Warning! No temperature/humidity/pressure data on the " \
-                  "device"
+            print("Warning! No temperature/humidity/pressure data on the " \
+                  "device")
             return []
 
         # Now get the data
@@ -372,6 +380,7 @@ class UT330(object):
 
         return data
 
+    # %%
     @buffer_safety
     def delete_data(self):
 
@@ -393,6 +402,7 @@ class UT330(object):
         if [171, 205, 4, 24, 0, 116, 181] != self._buffer:
             raise IOError("Error! Delete data returned error code.")
 
+    # %%
     @buffer_safety
     def read_config(self):
 
@@ -455,6 +465,7 @@ class UT330(object):
 
         return config
 
+    # %%
     @buffer_safety
     def write_config(self, config):
 
@@ -535,8 +546,9 @@ class UT330(object):
         if [171, 205, 4, 16, 0, 115, 117] != self._buffer:
             raise IOError("Error! Config writing returned error code.")
 
+    # %%
     @buffer_safety
-    def write_date_time(self, timestamp):
+    def write_datetime(self, timestamp):
 
         """Syncs the time to the timestamp"""
 
@@ -562,6 +574,7 @@ class UT330(object):
         if [171, 205, 4, 18, 0, 114, 21] != self._buffer:
             raise IOError("Error! Writing datetime returned error code.")
 
+    # %%
     @buffer_safety
     def read_offsets(self):
 
@@ -604,6 +617,7 @@ class UT330(object):
 
         return offsets
 
+    # %%
     @buffer_safety
     def write_offsets(self, offsets):
 
@@ -656,6 +670,7 @@ class UT330(object):
         if [171, 205, 4, 22, 0, 112, 213] != self._buffer:
             raise IOError("Error! Offset writing returned error code.")
 
+    # %%
     @buffer_safety
     def restore_factory(self):
 
@@ -672,6 +687,7 @@ class UT330(object):
         if [171, 205, 4, 32, 0, 103, 117] != self._buffer:
             raise IOError("Error! Restore factory returned an error code.")
 
+    # %%
     @buffer_safety
     def read_device_name(self):
 

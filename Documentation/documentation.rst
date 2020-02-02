@@ -5,7 +5,7 @@ How to use the UT330 software
 Introduction
 ============
 
-I work in an office and I thought the temperature was changing more than was comfortable through the day. Sometimes I would be cold and sometimes hot. I wanted a cheap temperature logger to monitor the temperature so I could display the temperature history as a chart. 
+I work in an office and I thought the temperature was changing more than was comfortable through the day. Sometimes, I would be cold and sometimes hot. I wanted a cheap temperature logger to monitor the temperature so I could display the temperature history as a chart. 
 
 I looked online on `AliExpress <http://www.aliexpress.com/>`_ and found the UT330B, a USB battery powered temperature and humidity logger. It was cheap ($35) and did what I wanted. The only problem was, it only had Windows software to control it and I use a Mac. The UT330B worked via a USB port, so I thought I could figure out the commands sent over the USB port and build something myself. With great help from `Philip Gladstone <https://github.com/pjsg>`_, I did it. This project is a result of that effort.
 
@@ -16,22 +16,43 @@ With this software, you can control the UT330B, or other UT330 devices, from any
 What’s in the software package?
 ===============================
 
-All of the software was built on Python 2.7 using the Anaconda distribution.
+All of the software was built on Python 3.7 using the Anaconda distribution. Here's what the software is.
 
 UT330
 -----
 
-This is the code that provides an interface to the UT330B. It’s fully commented and PEP8 compliant. 
+This is the code that provides an interface to the UT330B. It’s fully commented and PEP8 compliant. You can find it in the model subfolder of the UT3330BUI folder.
 
 Test
 ----
 
-This is a simple script that demonstrates all of the UT330B methods. Note that the script will delete all data on the device and do a factory reset. Please be careful using it!
+This is a simple script that demonstrates all of the UT330 methods. It’s fully commented and PEP8 compliant. You can find it in the model subfolder of the UT3330BUI folder.
 
-UI
---
+Note that the script might delete all data on the device and do a factory reset - check what's commented out before you use it. Please be careful using it!
 
-This is a small system I’ve written using Bokeh to provide a UI to the device.
+UT330BUI
+--------
+
+This is a complete app to control the UT330B devices using the UT330 class. It's written using Bokeh 1.4.0. To run the software, go to the folder above the UT330BUI folder and type in: ::
+
+    bokeh serve UT330BUI --show
+
+The code is structured as a model-view-controller architecture.
+
+controller
+    controller.py - this controls the software.
+model
+    UT330.py - explained above.
+    
+    Test.py - explained above.
+view
+    intro.py - introduces the software
+    
+    readdisplay.py - reads in temperature and humidity data from disk and displays it on a chart
+    
+    readsave.py - reads in temperature and humidity data from the device and saves it to disk
+    
+    settings.py - controls the UT330B settings
 
 Documentation
 -------------
@@ -177,43 +198,28 @@ The documentation for the UT330 object describes in more detail what’s availab
 * Delete the data
 * Do a factory reset on the device
 
-The UT330 UI
-============
+UT330BUI
+========
 
 Background
 ----------
 
-I wanted some way of displaying a chart and updating configuration settings using a UI. I could have done this with JavaScript and linked to Python, but I wanted to try out the Bokeh visualization package. I got something up and running, so I thought I would include it here.
+I wanted some way of displaying a chart and updating configuration settings using a UI. I could have done this with JavaScript and linked to Python, but I wanted to try out the Bokeh visualization package. 
 
 To try this code, you’ll need to install the Bokeh project. To do this, type: ::
 
     pip install bokeh
 
-Starting the UI server
-----------------------
+Starting the software
+---------------------
 
-The Bokeh application here uses the Bokeh server to provide a web interface. To run the application, you’ll need to start the Bokeh server. From a console, type in: ::
+The Bokeh application here uses the Bokeh server to provide a web interface. To run the application ::
 
-    bokeh serve
-
-Once the server starts, you should see something like this in the console window. ::
-
-    DEBUG:bokeh.server.tornado:Allowed Host headers: ['localhost:5006']
-    DEBUG:bokeh.server.tornado:These host origins can connect to the websocket: ['localhost:5006']
-    DEBUG:bokeh.server.tornado:Patterns are: [('/?', <class 'bokeh.server.views.doc_handler.DocHandler'>, {'application_context': <bokeh.server.application_context.ApplicationContext object at 0x106194150>, 'bokeh_websocket_path': '/ws'}), ('/ws', <class 'bokeh.server.views.ws.WSHandler'>, {'application_context': <bokeh.server.application_context.ApplicationContext object at 0x106194150>, 'bokeh_websocket_path': '/ws'}), ('/autoload.js', <class 'bokeh.server.views.autoload_js_handler.AutoloadJsHandler'>, {'application_context': <bokeh.server.application_context.ApplicationContext object at 0x106194150>, 'bokeh_websocket_path': '/ws'}), ('/static/(.*)', <class 'bokeh.server.views.static_handler.StaticHandler'>)]
-    INFO:bokeh.command.subcommands.serve:Starting Bokeh server on port 5006 with applications at paths ['/']
+    bokeh serve UT330BUI --show
 
 
-Running the UI
---------------
-
-To run the UI, run the file UI.py. This should start a browser and you should see something like this.
-
-.. image:: UI.png
-
-
-The UT330 object
-================
+The UT330 object's interface
+============================
 
 Methods
 -------
@@ -286,8 +292,8 @@ write_config
 
 **Return value**: None.
 
-write_date_time
-```````````````
+write_datetime
+``````````````
 
 **Description**: Writes the data and time to the device. The date and time is passed in as a Python datetime object as shown in this example: ::
 
@@ -379,9 +385,12 @@ The UT330B and variants
 -----------------------
 
 The UT330B is a battery powered temperature and humidity logger manufactured by Uni-Trend (uni-trend.com), a Chinese company based in Hong Kong. There are several variants of this device on the market:
-* UT330 A – temperature only
-* UT330 B – temperature and humidity (my device)
-* UT330 C – temperature, humidity, and pressure
+
+``*`` UT330 A – temperature only
+
+``*`` UT330 B – temperature and humidity (my device)
+
+``*`` UT330 C – temperature, humidity, and pressure
 
 The device is powered by a ½ AA lithium battery (please note: this is not an AA battery). This is a little hard to find and costs around $10, though you can get cheaper versions online for less. Some of the vendors on AliExpress sell the UT330 including a battery, though they charge a little more.
 
