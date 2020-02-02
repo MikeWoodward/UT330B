@@ -33,9 +33,26 @@ Note that the script might delete all data on the device and do a factory reset 
 UT330BUI
 --------
 
-This is a complete app to control the UT330B devices using the UT330 class. It's written using Bokeh 1.4.0. To run the software, go to the folder above the UT330B folder and type in:
+This is a complete app to control the UT330B devices using the UT330 class. It's written using Bokeh 1.4.0. To run the software, go to the folder above the UT330B folder and type in: ::
 
-bokeh serve UT330BUI --show
+    bokeh serve UT330BUI --show
+
+The code is structed as a model-view-controller architecture.
+
+controller
+    controller.py - this controls the software.
+model
+    UT330.py - explained above.
+    
+    Test.py - explained above.
+view
+    intro.py - introduces the software
+    
+    readdisplay.py - reads in temperature and humidity data from disk and displays it on a chart
+    
+    readsave.py - reads in temperature and humidity data from the device and saves it to disk
+    
+    settings.py - controls the UT330B settings
 
 Documentation
 -------------
