@@ -21,4 +21,4 @@ The project uses uses pyserial __version 3.01 or later__. This version uses Boke
 Oddities
 ========
 
-I updated this software in February 2020. For some unknown reason, the UT330B device won't accept date settings in February 2020, and won't function in February 2020. I think this is a device issue (maybe firmware?) but I can't confirm it. If anyone has any insight, I'd love to hear it.
+I updated this software in February 2020. For some unknown reason, the UT330B device won't accept date settings in February 2020, and won't function in February 2020. I think this is a device issue (maybe firmware?) but I can't confirm it - perhaps something to do with 2020-02. If anyone has any insight, I'd love to hear it.
