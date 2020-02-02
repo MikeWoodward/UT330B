@@ -5,7 +5,7 @@ How to use the UT330 software
 Introduction
 ============
 
-I work in an office and I thought the temperature was changing more than was comfortable through the day. Sometimes I would be cold and sometimes hot. I wanted a cheap temperature logger to monitor the temperature so I could display the temperature history as a chart. 
+I work in an office and I thought the temperature was changing more than was comfortable through the day. Sometimes, I would be cold and sometimes hot. I wanted a cheap temperature logger to monitor the temperature so I could display the temperature history as a chart. 
 
 I looked online on `AliExpress <http://www.aliexpress.com/>`_ and found the UT330B, a USB battery powered temperature and humidity logger. It was cheap ($35) and did what I wanted. The only problem was, it only had Windows software to control it and I use a Mac. The UT330B worked via a USB port, so I thought I could figure out the commands sent over the USB port and build something myself. With great help from `Philip Gladstone <https://github.com/pjsg>`_, I did it. This project is a result of that effort.
 
@@ -16,22 +16,26 @@ With this software, you can control the UT330B, or other UT330 devices, from any
 What’s in the software package?
 ===============================
 
-All of the software was built on Python 2.7 using the Anaconda distribution.
+All of the software was built on Python 3.7 using the Anaconda distribution. Here's what the software is.
 
 UT330
 -----
 
-This is the code that provides an interface to the UT330B. It’s fully commented and PEP8 compliant. 
+This is the code that provides an interface to the UT330B. It’s fully commented and PEP8 compliant. You can find it in the model subfolder of the UT3330BUI folder.
 
 Test
 ----
 
-This is a simple script that demonstrates all of the UT330B methods. Note that the script will delete all data on the device and do a factory reset. Please be careful using it!
+This is a simple script that demonstrates all of the UT330 methods. It’s fully commented and PEP8 compliant. You can find it in the model subfolder of the UT3330BUI folder.
 
-UI
---
+Note that the script might delete all data on the device and do a factory reset - check what's commented out before you use it. Please be careful using it!
 
-This is a small system I’ve written using Bokeh to provide a UI to the device.
+UT330BUI
+--------
+
+This is a complete app to control the UT330B devices using the UT330 class. It's written using Bokeh 1.4.0. To run the software, go to the folder above the UT330B folder and type in:
+
+bokeh serve UT330BUI --show
 
 Documentation
 -------------
