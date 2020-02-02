@@ -154,9 +154,8 @@ def device_writedatetime(ut330):
     print("▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉")
     print("▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ Write date time ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉")
     print("▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉")
-    NOW = datetime.datetime.now() + datetime.timedelta(28)
+    NOW = datetime.datetime.now()
 
-    print(NOW)
     ut330.write_datetime(NOW)
     
 def device_restorefactory(ut330):
