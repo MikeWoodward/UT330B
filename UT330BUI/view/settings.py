@@ -200,14 +200,14 @@ class Settings():
     def setup(self):
         """Method sets up object. Second part of two-part initialization."""
 
-        self.connect_ut330b.on_change("clicks", self.callback_connect_ut330b)
-        self.disconnect.on_change("clicks", self.callback_disconnect)
+        self.connect_ut330b.on_click(self.callback_connect_ut330b)
+        self.disconnect.on_click(self.callback_disconnect)
 
-        self.read_config.on_change("clicks", self.callback_read_config)
-        self.write_config.on_change("clicks", self.callback_write_config)
+        self.read_config.on_click(self.callback_read_config)
+        self.write_config.on_click(self.callback_write_config)
 
-        self.read_offsets.on_change("clicks", self.callback_read_offsets)
-        self.write_offsets.on_change("clicks", self.callback_write_offsets)
+        self.read_offsets.on_click(self.callback_read_offsets)
+        self.write_offsets.on_click(self.callback_write_offsets)
 
     # %%
     def update(self):
@@ -216,13 +216,13 @@ class Settings():
         self.connect_status.text = self.controller.status
 
     # %%
-    def callback_connect_ut330b(self, attrname, old, new):
+    def callback_connect_ut330b(self):
         """Callback method for Connect UT330B"""
 
         self.controller.connect()
 
     # %%
-    def callback_read_config(self, attrname, old, new):
+    def callback_read_config(self):
         """Callback method for Read config"""
 
         before = datetime.datetime.now()
@@ -259,7 +259,7 @@ class Settings():
         self.low_press_alarm.value = 'None'
 
     # %%
-    def callback_write_config(self, attrname, old, new):
+    def callback_write_config(self):
         """Callback method for Write config"""
 
         set_time = datetime.datetime.now() + self.time_offset
@@ -285,7 +285,7 @@ class Settings():
             return
 
     # %%
-    def callback_read_offsets(self, attrname, old, new):
+    def callback_read_offsets(self):
         """Callback method for read offsets"""
 
         self.controller.read_offsets()
@@ -302,7 +302,7 @@ class Settings():
         self.pressure_offset.value = str(offsets['pressure offset'])
 
     # %%
-    def callback_write_offsets(self, attrname, old, new):
+    def callback_write_offsets(self):
         """Callback method for write offsets"""
         
         try:
@@ -317,7 +317,7 @@ class Settings():
                                         "not connected.")
 
     # %%
-    def callback_disconnect(self, attrname, old, new):
+    def callback_disconnect(self):
         """Callback method for Disconnect"""
 
         self.controller.disconnect()
