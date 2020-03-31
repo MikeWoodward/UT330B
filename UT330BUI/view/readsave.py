@@ -109,11 +109,11 @@ class ReadSave():
     def setup(self):
         """Method sets up object. Second part of two-part initialization."""
 
-        self.connect.on_change("clicks", self.callback_connect)
-        self.read_ut330b.on_change("clicks", self.callback_read_ut330b)
-        self.write_to_disk.on_change("clicks", self.callback_write_to_disk)
-        self.erase_data.on_change("clicks", self.callback_erase_data)
-        self.disconnect.on_change("clicks", self.callback_disconnect)
+        self.connect.on_click(self.callback_connect)
+        self.read_ut330b.on_click(self.callback_read_ut330b)
+        self.write_to_disk.on_click(self.callback_write_to_disk)
+        self.erase_data.on_click(self.callback_erase_data)
+        self.disconnect.on_click(self.callback_disconnect)
 
     # %%
     def update(self):
@@ -121,17 +121,17 @@ class ReadSave():
         self.status.text = self.controller.status
 
     # %%
-    def callback_connect(self, attrname, old, new):
+    def callback_connect(self):
         """Callback method for Connect"""
         self.controller.connect()
 
     # %%
-    def callback_read_ut330b(self, attrname, old, new):
+    def callback_read_ut330b(self):
         """Callback method for Read UT330B"""
         self.controller.read_data()
 
     # %%
-    def callback_write_to_disk(self, attrname, old, new):
+    def callback_write_to_disk(self):
         """Callback method for Write to disk"""
 
         df = pd.DataFrame(self.controller.device_data)
@@ -160,11 +160,11 @@ class ReadSave():
         self.status.text = "Wrote data to file {0}.".format(data_file)
 
     # %%
-    def callback_erase_data(self, attrname, old, new):
+    def callback_erase_data(self):
         """Callback method for Erase data"""
         self.controller.erase()
 
     # %%
-    def callback_disconnect(self, attrname, old, new):
+    def callback_disconnect(self):
         """Callback method for Disconnect"""
         self.controller.disconnect()
