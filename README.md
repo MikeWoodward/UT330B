@@ -8,7 +8,9 @@ The [Uni-Trend UT330B](https://www.uni-trend.com/html/product/Environmental/Envi
 
 This project is a complete package, including software, a test script, a demo UI (written in Bokeh), and full documentation. 
 
-.. image:: https://github.com/MikeWoodward/UT330B/blob/master/Documentation/chart.png
+.. image:: https://github.com/MikeWoodward/UT330B/blob/master/Documentation/chart.png 
+
+<img src="https://github.com/MikeWoodward/UT330B/blob/master/Documentation/chart.png"/> 
 
 Acknowledgements
 ================
