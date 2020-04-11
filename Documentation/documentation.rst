@@ -53,6 +53,14 @@ view
     readsave.py - reads in temperature and humidity data from the device and saves it to disk
     
     settings.py - controls the UT330B settings
+    
+Here's a view of the temperature and humidity data.
+
+.. image:: chart.png
+
+Here's a view of the UI.
+
+.. image:: ui.png
 
 Documentation
 -------------
