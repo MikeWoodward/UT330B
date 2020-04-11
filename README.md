@@ -7,10 +7,10 @@ What the software does
 The [Uni-Trend UT330B](https://www.uni-trend.com/html/product/Environmental/Environmental_Tester/UT330-USB/UT330B.html) is a battery-powered USB temperature and humidity logger. Off-the-shelf, it only comes with Windows control software. This project provides Python code to control the device from any operating system.
 
 This project is a complete package, including software, a test script, a demo UI (written in Bokeh), and full documentation. 
-
-.. image:: https://github.com/MikeWoodward/UT330B/blob/master/Documentation/chart.png 
-
+ 
 <img src="https://github.com/MikeWoodward/UT330B/blob/master/Documentation/chart.png"/> 
+
+<img src="https://github.com/MikeWoodward/UT330B/blob/master/Documentation/ui.png"/> 
 
 Acknowledgements
 ================
