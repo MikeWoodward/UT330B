@@ -1,6 +1,8 @@
 # UT330B
 Operating system independent controller for the Uni-Trend UT330B temperature and humidity logger.
 
+I've blogged about this software on my blog: https://blog.engora.com/2020/02/reverse-engineering-sensor.html
+
 What the software does
 ======================
 
