@@ -369,14 +369,14 @@ class UT330():
             humidity = float(self._buffer[self._index] +
                              256*self._buffer[self._index + 1])/10
             pressure = float(self._buffer[self._index + 2] +
-                             256*self._buffer[self._index + 2])/10
+                             256*self._buffer[self._index + 3])/10
 
             self._index += 4
 
             data.append({'Timestamp': timestamp,
                          'Temperature (C)': temperature,
                          'Relative humidity (%)': humidity,
-                         'Pressure (Pa)': pressure})
+                         'Pressure (hPa)': pressure})
 
         return data
 
