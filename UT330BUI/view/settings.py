@@ -13,7 +13,7 @@ This code is licensed under the MIT license
 # Imports
 # -----------------------------------------------------------------------------
 import datetime
-from bokeh.models.widgets import (Button, Div, Panel, Select, TextInput)
+from bokeh.models import (Button, Div, TabPanel, Select, TextInput)
 from bokeh.layouts import column, row
 
 
