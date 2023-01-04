@@ -12,7 +12,7 @@ This code is licensed under the MIT license
 # %%---------------------------------------------------------------------------
 # Imports
 # -----------------------------------------------------------------------------
-from bokeh.models.widgets import (Div, TabPanel)
+from bokeh.models import (Div, TabPanel)
 from bokeh.layouts import column
 
 
