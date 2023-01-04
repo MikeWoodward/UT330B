@@ -13,7 +13,7 @@ This code is licensed under the MIT license
 # Imports
 # -----------------------------------------------------------------------------
 import os
-from bokeh.models.widgets import (Button, Div, Panel)
+from bokeh.models import (Button, Div, TabPanel)
 from bokeh.layouts import column, row
 import pandas as pd
 
@@ -102,7 +102,7 @@ class ReadSave():
                                  self.write_to_disk, self.erase_data,
                                  self.disconnect)],
                    sizing_mode="stretch_both")
-        self.panel = Panel(child=self.layout,
+        self.panel = TabPanel(child=self.layout,
                            title='Read & save')
 
     # %%
