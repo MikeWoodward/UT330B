@@ -101,7 +101,7 @@ class ReadDisplay():
                              width=250, height=80),
                       column(self.temphumidity, sizing_mode='stretch_both')],
             sizing_mode='stretch_both')
-        self.panel = Panel(child=self.layout, title='Read & display')
+        self.panel = TabPanel(child=self.layout, title='Read & display')
 
     # %%
     def setup(self):
