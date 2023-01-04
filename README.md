@@ -22,7 +22,7 @@ Many thanks to [Philip Gladstone](https://github.com/pjsg) for his tremendous he
 Installation notes
 ==================
 
-The project uses uses pyserial __version 3.01 or later__. This version uses Bokeh version 2.0.1. See the Documentation section for instructions for how to use the software.
+The project uses uses pyserial __version 3.01 or later__. This version uses Bokeh version 3.0.3. See the Documentation section for instructions for how to use the software.
 
 Oddities
 ========
