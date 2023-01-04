@@ -12,7 +12,7 @@ This code is licensed under the MIT license
 # %%---------------------------------------------------------------------------
 # Imports
 # -----------------------------------------------------------------------------
-from bokeh.models.widgets import (Div, FileInput, Panel)
+from bokeh.models import (Div, FileInput, TabPanel)
 from bokeh.plotting import Figure
 from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource, LinearAxis, Range1d
