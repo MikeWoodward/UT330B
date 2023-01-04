@@ -13,7 +13,7 @@ This code is licensed under the MIT license
 # Imports
 # -----------------------------------------------------------------------------
 from bokeh.models import (Div, FileInput, TabPanel)
-from bokeh.plotting import Figure
+from bokeh.plotting import figure
 from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource, LinearAxis, Range1d
 
@@ -48,7 +48,7 @@ class ReadDisplay():
                           sizing_mode='stretch_width')
 
         # Chart to show temperature and/or humidity.
-        self.temphumidity = Figure(x_axis_type='datetime',
+        self.temphumidity = figure(x_axis_type='datetime',
                                    title="Humidity & temperature by datetime",
                                    x_axis_label='Datetime',
                                    y_axis_label='Temperature (C)')
