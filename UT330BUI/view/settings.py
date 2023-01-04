@@ -194,7 +194,7 @@ class Settings():
                                            self.write_offsets)
                                        ],
                              sizing_mode='stretch_both')
-        self.panel = Panel(child=self.layout, title='Settings')
+        self.panel = TabPanel(child=self.layout, title='Settings')
 
     # %%
     def setup(self):
