@@ -12,7 +12,7 @@ This code is licensed under the MIT license
 # %%---------------------------------------------------------------------------
 # Imports
 # -----------------------------------------------------------------------------
-from bokeh.models.widgets import (Div, Panel)
+from bokeh.models import (Div, TabPanel)
 from bokeh.layouts import column
 
 
@@ -57,7 +57,7 @@ class Intro():
         self.layout = column(children=[self.logo,
                                        self.description],
                              sizing_mode='stretch_both')
-        self.panel = Panel(child=self.layout, title='UT330B')
+        self.panel = TabPanel(child=self.layout, title='UT330B')
 
     # %%
     def setup(self):

@@ -33,7 +33,7 @@ Note that the script might delete all data on the device and do a factory reset 
 UT330BUI
 --------
 
-This is a complete app to control the UT330B devices using the UT330 class. It's written using Bokeh 2.0.1. To run the software, go to the folder above the UT330BUI folder and type in: ::
+This is a complete app to control the UT330B devices using the UT330 class. It's written using Bokeh 3.0.3. To run the software, go to the folder above the UT330BUI folder and type in: ::
 
     bokeh serve UT330BUI --show
 

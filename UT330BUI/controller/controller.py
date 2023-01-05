@@ -13,7 +13,7 @@ This code is licensed under the MIT license
 # Imports
 # -----------------------------------------------------------------------------
 from bokeh.io import curdoc
-from bokeh.models.widgets import Tabs
+from bokeh.models import Tabs
 from model.UT330 import UT330
 from view.intro import Intro
 from view.readdisplay import ReadDisplay

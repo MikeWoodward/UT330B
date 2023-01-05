@@ -12,8 +12,8 @@ This code is licensed under the MIT license
 # %%---------------------------------------------------------------------------
 # Imports
 # -----------------------------------------------------------------------------
-from bokeh.models.widgets import (Div, FileInput, Panel)
-from bokeh.plotting import Figure
+from bokeh.models import (Div, FileInput, TabPanel)
+from bokeh.plotting import figure
 from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource, LinearAxis, Range1d
 
@@ -48,7 +48,7 @@ class ReadDisplay():
                           sizing_mode='stretch_width')
 
         # Chart to show temperature and/or humidity.
-        self.temphumidity = Figure(x_axis_type='datetime',
+        self.temphumidity = figure(x_axis_type='datetime',
                                    title="Humidity & temperature by datetime",
                                    x_axis_label='Datetime',
                                    y_axis_label='Temperature (C)')
@@ -101,7 +101,7 @@ class ReadDisplay():
                              width=250, height=80),
                       column(self.temphumidity, sizing_mode='stretch_both')],
             sizing_mode='stretch_both')
-        self.panel = Panel(child=self.layout, title='Read & display')
+        self.panel = TabPanel(child=self.layout, title='Read & display')
 
     # %%
     def setup(self):
